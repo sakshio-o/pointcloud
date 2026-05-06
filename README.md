@@ -14,9 +14,9 @@
 
 Pointcloud From Video is a complete computer vision pipeline that converts a simple phone video into an interactive 3D reconstruction using **Structure from Motion (SfM)** and **Multi-View Stereo (MVS)**.
 
-Record a shoe → get a colored 3D point cloud.  
-Record a helmet → get a textured surface mesh.  
-Record any rigid object → rotate and inspect it live in 3D.
+Record a video of an object(shoe) get a colored 3D point cloud.  
+Record a helmet get a textured surface mesh.  
+Record any rigid object rotate and inspect it live in 3D.
 
 ---
 
