@@ -3,7 +3,7 @@ import os
 from tqdm import tqdm
 
 # ── CONFIG ──────────────────────────────────────────────
-VIDEO_PATH   = "data/videos/shoe.mp4"
+VIDEO_PATH   = "data/videos/video.mp4"      # Add your video recording in place of video.mp4
 OUTPUT_DIR   = "data/frames"
 FRAME_STEP   = 1         # extract every 5th frame
 MAX_FRAMES   = 300        # safety cap
