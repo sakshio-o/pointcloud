@@ -2,7 +2,7 @@
 
 > Record a 360° video of any object. Get a fully textured 3D point cloud and mesh back.
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python)
+![Python](https://img.shields.io/badge/Python-3.10-blue?style=flat-square&logo=python)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-red?style=flat-square&logo=opencv)
 ![Open3D](https://img.shields.io/badge/Open3D-0.19+-green?style=flat-square)
 ![COLMAP](https://img.shields.io/badge/COLMAP-4.x-orange?style=flat-square)
@@ -14,7 +14,7 @@
 
 Pointcloud From Video is a complete computer vision pipeline that converts a simple phone video into an interactive 3D reconstruction using **Structure from Motion (SfM)** and **Multi-View Stereo (MVS)**.
 
-Record a video of an object(shoe) get a colored 3D point cloud.  
+Record a video(shoe) get a colored 3D point cloud.  
 Record a helmet get a textured surface mesh.  
 Record any rigid object rotate and inspect it live in 3D.
 
@@ -79,30 +79,63 @@ pointcloud-from-video/
 
 ## Setup
 
-### 1. Clone the repo
+> **Python 3.10 is required.** Open3D does NOT support Python 3.11, 3.12, or 3.13.
+
+### 1. Install Python 3.10
+
+Download the installer directly:  
+ **[python-3.10.11-amd64.exe](https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe)**
+
+During installation:
+- Check **"Add Python to PATH"**
+- Click **Customize installation**
+- Install to `C:\Python310\`
+
+Verify:
+```bash
+py -3.10 --version
+# Expected: Python 3.10.11
+```
+
+### 2. Clone the repo
 ```bash
 git clone https://github.com/YOUR_USERNAME/pointcloud-from-video.git
 cd pointcloud-from-video
 ```
 
-### 2. Create virtual environment
+### 3. Create virtual environment with Python 3.10
 ```bash
-python -m venv venv
+py -3.10 -m venv venv
 venv\Scripts\activate
+python --version
+# Must show Python 3.10.11
 ```
 
-### 3. Install dependencies
+### 4. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Install COLMAP
-- Download from [github.com/colmap/colmap/releases](https://github.com/colmap/colmap/releases)
-- Extract to `C:\colmap\`
-- Add `C:\colmap\` to system PATH
-- Verify with `colmap -h`
+Verify installation:
+```bash
+python -c "import cv2; print('OpenCV:', cv2.__version__)"
+python -c "import open3d; print('Open3D:', open3d.__version__)"
+```
 
-### 5. Run
+### 5. Install COLMAP
+- Download from [github.com/colmap/colmap/releases](https://github.com/colmap/colmap/releases)
+- Download the **Windows CUDA** `.zip`
+- Extract to `C:\colmap\`
+- Add `C:\colmap\` to system PATH:
+  - Search → **Edit the system environment variables**
+  - Environment Variables → Path → Edit → New → `C:\colmap\`
+- Open a new terminal and verify:
+```bash
+colmap -h
+# Expected: COLMAP 4.x.x with CUDA
+```
+
+### 6. Run
 ```bash
 python main.py
 ```
@@ -122,6 +155,18 @@ python main.py
 
 ---
 
+## Recording Tips
+
+| Do | Avoid |
+|----|-------|
+| Slow 360° walk around object | Fast movement |
+| Good even lighting | Shadows and flash |
+| Textured objects (shoes, toys) | Glossy or reflective surfaces |
+| 30–60 second video | Under 10 seconds |
+| Horizontal phone | Vertical video |
+
+---
+
 ## Requirements
 
 ```
@@ -133,10 +178,10 @@ tqdm
 scikit-image
 ```
 
-- Python 3.10 or higher
-- COLMAP 4.x with CUDA recommended
+- **Python 3.10 exactly** (3.11+ not supported by Open3D)
+- COLMAP 4.x
 - NVIDIA GPU recommended for dense reconstruction
-- Works on Windows and Linux
+- Windows / Linux
 
 ---
 
