@@ -64,6 +64,7 @@ pointcloud-from-video/
 │
 ├── src/
 │   ├── frame_extractor.py # Video → frames
+│   ├── check.py           # Check blur score
 │   ├── quality_filter.py  # Remove bad frames
 │   ├── reconstruction.py  # COLMAP pipeline
 │   ├── mesh_generator.py  # Point cloud → mesh
